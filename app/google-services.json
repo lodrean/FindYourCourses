@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "467391281911",
+    "project_id": "findyourcourse-a6870",
+    "storage_bucket": "findyourcourse-a6870.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467391281911:android:77c6d9820418616848f1f2",
+        "android_client_info": {
+          "package_name": "com.lodrean.findyourcourse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKcu6VmFiEb0bJpi4DrMgah_yz1mLxq2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

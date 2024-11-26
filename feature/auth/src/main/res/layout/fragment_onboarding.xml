@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboarding_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    android:theme="@style/Theme.Stepic">
+
+    <Space
+        android:id="@+id/top_space"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:fontFamily="@font/roboto_medium"
+        android:lines="2"
+        android:text="@string/start_text"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_space" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/space_32"
+        app:constraint_referenced_ids="button1, button2, button3"
+        app:flow_horizontalGap="@dimen/space_4"
+        app:flow_wrapMode="none"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button1"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-40dp"
+        android:layout_marginTop="@dimen/space_32"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp"
+        android:text="@string/administration_one_ass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button2"
+        style="@style/button_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp"
+        android:rotation="-15"
+        android:text="@string/rabbitmq"
+        android:translationY="8dp"
+        app:layout_constraintStart_toEndOf="@id/button1"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button3"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="120dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp"
+        android:text="@string/traffic"
+        app:layout_constraintStart_toEndOf="@id/button2"
+        app:layout_constraintTop_toTopOf="@id/title" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/buttonPanel2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="button4, button5, button6"
+        app:flow_horizontalGap="@dimen/space_4"
+        app:flow_wrapMode="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel">
+
+
+    </androidx.constraintlayout.helper.widget.Flow>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button4"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-20dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        android:text="@string/content_marketing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button5"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        android:text="@string/b2b"
+        app:layout_constraintStart_toEndOf="@id/button4"
+        app:layout_constraintTop_toBottomOf="@id/button1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button9"
+        style="@style/button_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="28dp"
+        android:paddingVertical="26dp"
+        android:rotation="15"
+        android:text="@string/big_data"
+        android:translationY="-8dp"
+        app:layout_constraintStart_toEndOf="@id/button8"
+        app:layout_constraintTop_toBottomOf="@id/button4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button6"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        android:text="@string/google"
+        app:layout_constraintStart_toEndOf="@id/button5"
+        app:layout_constraintTop_toBottomOf="@id/button1" />
+
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/buttonPanel3"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:constraint_referenced_ids="button7, button8, button9"
+        app:flow_horizontalGap="@dimen/space_4"
+        app:flow_wrapMode="none"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button7"
+        style="@style/button_light_gray"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-20dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp"
+        android:text="@string/ux"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button8"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp"
+        android:text="@string/web_analitica"
+        app:layout_constraintStart_toEndOf="@id/button7"
+        app:layout_constraintTop_toBottomOf="@id/button4" />
+
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/buttonPanel4"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginVertical="@dimen/space_8"
+        app:constraint_referenced_ids="button10, button11, button12, button13"
+        app:flow_horizontalGap="@dimen/space_4"
+        app:flow_wrapMode="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel3" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button10"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/space_4"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        android:text="@string/gamedesign"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button7" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button15"
+        style="@style/button_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp"
+        android:rotation="-15"
+        android:text="@string/three_js"
+        android:translationY="-8dp"
+        app:layout_constraintStart_toEndOf="@id/button14"
+        app:layout_constraintTop_toBottomOf="@id/button10" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button11"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/space_8"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        android:text="@string/web_design"
+        app:layout_constraintStart_toEndOf="@id/button10"
+        app:layout_constraintTop_toTopOf="@id/button7" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button12"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        android:text="@string/cinema_4d"
+        app:layout_constraintStart_toEndOf="@id/button11"
+        app:layout_constraintTop_toBottomOf="@id/button7" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button13"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        android:text="@string/prompt_ingeneering"
+        app:layout_constraintStart_toEndOf="@id/button12"
+        app:layout_constraintTop_toTopOf="@id/button7" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/buttonPanel5"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:constraint_referenced_ids="button14, button15, button16, button17"
+        app:flow_horizontalGap="@dimen/space_4"
+        app:flow_wrapMode="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button14"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="@dimen/space_20"
+        android:text="@string/webflow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button10" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button16"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="@dimen/space_20"
+        android:text="@string/parsing"
+        app:layout_constraintStart_toEndOf="@id/button15"
+        app:layout_constraintTop_toBottomOf="@id/button10" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button17"
+        style="@style/button_light_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="@dimen/space_20"
+        android:text="@string/python"
+        app:layout_constraintStart_toEndOf="@id/button16"
+        app:layout_constraintTop_toBottomOf="@id/button10" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_resume"
+        style="@style/button_green"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:paddingVertical="10dp"
+        android:text="@string/resume"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel5"
+        app:layout_constraintVertical_bias="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_courses">Search courses…</string>
+    <string name="autor">Автор</string>
+    <string name="begin_course">Начать курс</string>
+    <string name="about_course">О курсе</string>
+    <string name="go_to_platform">Перейти на платформу</string>
+    <string name="large_text_example"><![CDATA[У вас будет 7 видеоуроков в высоком качестве. На них спикер объясняет теорию и показывает как выполнять практические задания. Доступ к материалам сохраняется на 2 года Кроме теоретических материалов вас ждут тесты и практические задания. Они помогут лучше запомнить новую информацию]]></string>
+</resources>

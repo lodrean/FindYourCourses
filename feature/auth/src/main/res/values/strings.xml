@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_text">Тысячи курсов\n в одном месте</string>
+    <string name="rabbitmq">RabbitMQ</string>
+    <string name="administration_one_ass">1С Администрирование</string>
+    <string name="content_marketing">Контент маркетинг</string>
+    <string name="b2b">B2B маркетинг</string>
+    <string name="google">Google Аналитика</string>
+    <string name="ux">UX исследователь</string>
+    <string name="web_analitica">Веб-аналитика</string>
+    <string name="big_data">Big Data</string>
+    <string name="gamedesign">Геймдизайн</string>
+    <string name="web_design">Веб-дизайн</string>
+    <string name="cinema_4d">Cinema 4D</string>
+    <string name="prompt_ingeneering">Промпт инженеринг</string>
+    <string name="webflow">Webflow</string>
+    <string name="three_js">Three.js</string>
+    <string name="parsing">Парсинг</string>
+    <string name="python">Python-разработка</string>
+    <string name="resume">Продолжить</string>
+    <string name="traffic">Трафик</string>
+    <string name="registration">Регистрация</string>
+    <string name="email">Email</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="password">Пароль</string>
+    <string name="repeat_password">Повторить пароль</string>
+    <string name="enter_the_password">Введите пароль</string>
+    <string name="enter_password_one_more_time">Введите пароль ещё раз</string>
+    <string name="have_account_already">Уже есть аккаунт?</string>
+    <string name="Enter">Войти</string>
+    <string name="Entering">Вход</string>
+    <string name="no_account">Нету аккаунта?</string>
+    <string name="forgot_password">Забыл пароль</string>
+</resources>

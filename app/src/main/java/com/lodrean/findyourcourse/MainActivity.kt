@@ -1,4 +1,4 @@
-package com.lodrean.stepic
+package com.lodrean.findyourcourse
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                     com.lodrean.auth.R.id.registrationFragment,
                     com.lodrean.auth.R.id.signInFragment,
                     com.lodrean.auth.R.id.onboardingFragment,
-                        -> false
+                    -> false
 
                     else -> true
                 }

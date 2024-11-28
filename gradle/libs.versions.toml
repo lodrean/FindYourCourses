@@ -26,6 +26,7 @@ ktor = "3.0.1"
 playServicesAuth = "21.2.0"
 slf4j = "2.0.16"
 dokka = "1.9.20"
+detekt = "1.23.7"
 
 [libraries]
 
@@ -55,9 +56,12 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 ksp = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "kspVersion" }
-medivh397-blurview = { module = "com.github.medivh397:BlurView", version.ref = "githubBlurview" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 
+# Detekt
+staticAnalysis-detektCli = { module = "io.gitlab.arturbosch.detekt:detekt-cli", version.ref = "detekt" }
+staticAnalysis-detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+staticAnalysis-detektLibraries = { module = "io.gitlab.arturbosch.detekt:detekt-rules-libraries", version.ref = "detekt" }
 
 ktor-logger = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
 
@@ -71,6 +75,11 @@ play-services-auth = { module = "com.google.android.gms:play-services-auth", ver
 
 [bundles]
 ktor = ["ktor-logger", "ktor-client-core", "ktor-client-okhttp", "ktor-serialization"]
+staticAnalysis-detekt = [
+    "staticAnalysis-detektCli",
+    "staticAnalysis-detektFormatting",
+    "staticAnalysis-detektLibraries"
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -80,5 +89,6 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka"}
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 

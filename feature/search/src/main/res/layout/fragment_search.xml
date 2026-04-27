@@ -43,7 +43,7 @@
         android:fontFamily="@font/roboto_regular"
         android:textColor="@color/green"
         android:textSize="@dimen/font_16"
-        app:layout_constraintEnd_toStartOf="@id/arrow_down_up"
+        app:layout_constraintEnd_toStartOf="@+id/arrow_down_up"
         app:layout_constraintTop_toBottomOf="@id/search_edit_frame"
         tools:text="По дате добавления" />
 

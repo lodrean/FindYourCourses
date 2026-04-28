@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -54,7 +55,12 @@ class FavoritesFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
                     adapter?.submitList(state.courses)
-                    // TODO: handle loading and error states
+                    binding.progressBar.isVisible = state.isLoading
+                    binding.errorText.isVisible = state.error != null
+                    binding.errorText.text = state.error
+                    val showEmpty = !state.isLoading && state.error == null && state.courses.isEmpty()
+                    binding.emptyText.isVisible = showEmpty
+                    binding.recyclerView.isVisible = state.courses.isNotEmpty()
                 }
             }
         }

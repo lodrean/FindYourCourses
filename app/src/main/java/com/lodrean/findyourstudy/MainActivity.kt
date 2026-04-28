@@ -2,6 +2,7 @@ package com.lodrean.stepic
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -9,6 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lodrean.findyourcourse.R
 import com.lodrean.findyourcourse.databinding.ActivityMainBinding
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 

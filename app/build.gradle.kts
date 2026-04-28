@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.hilt.android)
     id("upload-tg-plugin")
 }
 
@@ -44,6 +45,9 @@ android {
 
 dependencies {
     implementation(projects.uiKit)
+    implementation(projects.core.model)
+    implementation(projects.core.network)
+    implementation(projects.core.database)
     implementation(projects.feature.auth)
     implementation(projects.feature.favorites)
     implementation(projects.feature.search)

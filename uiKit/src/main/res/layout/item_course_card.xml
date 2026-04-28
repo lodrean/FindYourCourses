@@ -6,6 +6,7 @@
     android:id="@+id/card_search_view"
     android:layout_width="match_parent"
     android:layout_height="236dp"
+    android:layout_marginVertical="@dimen/space_8"
     android:backgroundTint="@color/dark_gray"
     android:clickable="true"
     android:elevation="0dp"
@@ -20,6 +21,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cover_image"
             android:layout_width="match_parent"
             android:layout_height="114dp"
             android:background="@drawable/image_radius"
@@ -27,6 +29,7 @@
             tools:src="@drawable/cover" />
 
         <TextView
+            android:id="@+id/title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/space_16"
@@ -35,13 +38,13 @@
             tools:text="Java-разработчик с нуля" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/summary_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_12"
-            android:ellipsize="marquee"
+            android:ellipsize="end"
             android:lines="2"
             android:paddingHorizontal="@dimen/space_16"
-            android:singleLine="false"
             android:textColor="@color/white_70"
             tools:text="@string/example_text" />
 
@@ -52,17 +55,22 @@
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/space_16">
 
-
-            <TextView
-                android:layout_width="0dp"
+            <ImageButton
+                android:id="@+id/favorite_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_16"
-                tools:text="999₽" />
+                android:layout_gravity="start|center_vertical"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_favorite_border"
+                tools:src="@drawable/ic_favorite" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/more_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center_vertical"

@@ -15,12 +15,19 @@ class SearchRepository @Inject constructor(
     private val courseDao: CourseDao,
 ) {
 
-    suspend fun searchCourses(query: String, page: Int = 1): List<Course> {
+    suspend fun searchCourses(query: String, page: Int = 1): SearchResult {
         val searchResult = api.searchCourses(query, page)
         val courseIds = searchResult.searchResults.mapNotNull { it.course }
-        if (courseIds.isEmpty()) return emptyList()
-        val courseResponse = api.getCoursesByIds(courseIds)
-        return courseResponse.courses.map { it.toCourse() }
+        val courses = if (courseIds.isEmpty()) {
+            emptyList()
+        } else {
+            val courseResponse = api.getCoursesByIds(courseIds)
+            courseResponse.courses.map { it.toCourse() }
+        }
+        return SearchResult(
+            courses = courses,
+            hasNext = searchResult.meta.hasNext,
+        )
     }
 
     suspend fun addToFavorites(course: Course) {
@@ -37,6 +44,11 @@ class SearchRepository @Inject constructor(
         return api.getCourseById(id)?.toCourse()
     }
 }
+
+data class SearchResult(
+    val courses: List<Course>,
+    val hasNext: Boolean,
+)
 
 fun CourseDto.toCourse(): Course = Course(
     id = id,

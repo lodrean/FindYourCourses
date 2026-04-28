@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lodrean.search.databinding.FragmentSearchBinding
 import com.lodrean.uikit.CourseAdapter
@@ -47,7 +48,10 @@ class SearchFragment : Fragment() {
     private fun setupRecyclerView() {
         adapter = CourseAdapter(
             onFavoriteClick = { course -> viewModel.toggleFavorite(course) },
-            onItemClick = { /* navigate to details */ },
+            onItemClick = { course ->
+                val bundle = android.os.Bundle().apply { putLong("courseId", course.id) }
+                findNavController().navigate(R.id.action_searchFragment_to_detailsFragment, bundle)
+            },
         )
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter

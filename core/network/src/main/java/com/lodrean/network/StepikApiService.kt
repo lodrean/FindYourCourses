@@ -1,5 +1,6 @@
 package com.lodrean.network
 
+import com.lodrean.network.dto.CourseDto
 import com.lodrean.network.dto.CourseResponse
 import com.lodrean.network.dto.SearchResultResponse
 import io.ktor.client.HttpClient
@@ -47,5 +48,11 @@ class StepikApiService {
         return client.get("courses") {
             ids.forEach { parameter("ids[]", it) }
         }.body()
+    }
+
+    suspend fun getCourseById(id: Long): CourseDto? {
+        return client.get("courses") {
+            parameter("ids[]", id)
+        }.body<CourseResponse>().courses.firstOrNull()
     }
 }

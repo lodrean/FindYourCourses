@@ -32,6 +32,10 @@ class SearchRepository @Inject constructor(
     }
 
     fun getFavoritesFlow(): Flow<List<CourseEntity>> = courseDao.getAll()
+
+    suspend fun getCourseById(id: Long): Course? {
+        return api.getCourseById(id)?.toCourse()
+    }
 }
 
 fun CourseDto.toCourse(): Course = Course(

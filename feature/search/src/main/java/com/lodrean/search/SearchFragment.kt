@@ -29,6 +29,7 @@ class SearchFragment : Fragment() {
 
     private val viewModel: SearchViewModel by viewModels()
     private var adapter: CourseAdapter? = null
+    private var scrollListener: RecyclerView.OnScrollListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,17 +50,15 @@ class SearchFragment : Fragment() {
     private fun setupRecyclerView() {
         adapter = CourseAdapter(
             onFavoriteClick = { course -> viewModel.toggleFavorite(course) },
-            onItemClick = { course ->
-                val bundle = android.os.Bundle().apply { putLong("courseId", course.id) }
-                findNavController().navigate(R.id.action_searchFragment_to_detailsFragment, bundle)
-            },
+            onItemClick = { course -> navigateToDetails(course.id) },
         )
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        scrollListener = object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
+                if (dy <= 0) return
                 val visibleItemCount = layoutManager.childCount
                 val totalItemCount = layoutManager.itemCount
                 val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
@@ -67,7 +66,14 @@ class SearchFragment : Fragment() {
                     viewModel.loadNextPage()
                 }
             }
-        })
+        }
+        scrollListener?.let { binding.recyclerView.addOnScrollListener(it) }
+    }
+
+    private fun navigateToDetails(courseId: Long) {
+        if (findNavController().currentDestination?.id != R.id.searchFragment) return
+        val bundle = android.os.Bundle().apply { putLong("courseId", courseId) }
+        findNavController().navigate(R.id.action_searchFragment_to_detailsFragment, bundle)
     }
 
     private fun setupSearchInput() {
@@ -100,6 +106,7 @@ class SearchFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        scrollListener?.let { binding.recyclerView.removeOnScrollListener(it) }
         super.onDestroyView()
         _binding = null
     }

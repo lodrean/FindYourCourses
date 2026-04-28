@@ -46,13 +46,19 @@ class DetailsViewModel @Inject constructor(
 
     fun toggleFavorite() {
         val course = _uiState.value.course ?: return
+        val newFavoriteState = !course.isFavorite
+        _uiState.update { it.copy(course = course.copy(isFavorite = newFavoriteState)) }
         viewModelScope.launch {
-            if (course.isFavorite) {
-                repository.removeFromFavorites(course)
-            } else {
-                repository.addToFavorites(course)
+            try {
+                if (newFavoriteState) {
+                    repository.addToFavorites(course.copy(isFavorite = true))
+                } else {
+                    repository.removeFromFavorites(course.copy(isFavorite = false))
+                }
+            } catch (e: Exception) {
+                // rollback on error
+                _uiState.update { it.copy(course = course.copy(isFavorite = !newFavoriteState), error = e.message) }
             }
-            _uiState.update { it.copy(course = course.copy(isFavorite = !course.isFavorite)) }
         }
     }
 }

@@ -36,7 +36,7 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.beginCourseButton.setOnClickListener {
+        binding.favoriteButton.setOnClickListener {
             viewModel.toggleFavorite()
         }
         collectUiState()
@@ -58,7 +58,7 @@ class DetailsFragment : Fragment() {
                             .load(course.coverUrl)
                             .placeholder(com.lodrean.uikit.R.drawable.cover)
                             .into(binding.titleImage)
-                        binding.beginCourseButton.text = if (course.isFavorite) {
+                        binding.favoriteButton.text = if (course.isFavorite) {
                             getString(com.lodrean.search.R.string.remove_from_favorites)
                         } else {
                             getString(com.lodrean.search.R.string.add_to_favorites)

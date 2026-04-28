@@ -38,29 +38,28 @@ class SearchViewModel @Inject constructor(
                 .debounce(300)
                 .flatMapLatest { q ->
                     if (q.isBlank()) {
-                        flow { emit(emptyList<Course>() to false to emptySet<Long>()) }
+                        flow { emit(SearchPayload(emptyList(), false, emptySet())) }
                     } else {
                         flow {
                             _uiState.update { it.copy(isLoading = true, error = null) }
                             try {
                                 val result = repository.searchCourses(q, page = 1)
                                 val favIds = favoriteIdsFlow.first()
-                                emit(result.courses to result.hasNext to favIds)
+                                emit(SearchPayload(result.courses, result.hasNext, favIds))
                             } catch (e: Exception) {
                                 _uiState.update { it.copy(isLoading = false, error = e.message) }
-                                emit(emptyList<Course>() to false to emptySet<Long>())
+                                emit(SearchPayload(emptyList(), false, emptySet()))
                             }
                         }
                     }
                 }
-                .collect { (coursesAndHasNext, favIds) ->
-                    val (courses, hasNext) = coursesAndHasNext
+                .collect { payload ->
                     _uiState.update {
                         it.copy(
-                            courses = courses.map { course ->
-                                course.copy(isFavorite = favIds.contains(course.id))
+                            courses = payload.courses.map { course ->
+                                course.copy(isFavorite = payload.favIds.contains(course.id))
                             },
-                            hasNext = hasNext,
+                            hasNext = payload.hasNext,
                             currentPage = 1,
                             isLoading = false,
                             error = null,
@@ -120,6 +119,12 @@ class SearchViewModel @Inject constructor(
         }
     }
 }
+
+data class SearchPayload(
+    val courses: List<Course>,
+    val hasNext: Boolean,
+    val favIds: Set<Long>,
+)
 
 data class SearchUiState(
     val courses: List<Course> = emptyList(),

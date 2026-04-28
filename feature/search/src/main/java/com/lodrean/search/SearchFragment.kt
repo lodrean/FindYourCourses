@@ -1,36 +1,73 @@
 package com.lodrean.search
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
+import android.widget.EditText
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.lodrean.search.databinding.FragmentSearchBinding
+import com.lodrean.uikit.CourseAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
+
     @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: FragmentSearchBinding? = null
-
     private val binding get() = _binding!!
 
-    @RequiresApi(Build.VERSION_CODES.S)
+    private val viewModel: SearchViewModel by viewModels()
+    private var adapter: CourseAdapter? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?,
-    ) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        setupSearchInput()
+        collectUiState()
+    }
+
+    private fun setupRecyclerView() {
+        adapter = CourseAdapter(
+            onFavoriteClick = { course -> viewModel.toggleFavorite(course) },
+            onItemClick = { /* navigate to details */ },
+        )
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun setupSearchInput() {
+        val editText = binding.root.findViewById<EditText>(com.lodrean.search.R.id.search_edit_frame)
+        editText.doAfterTextChanged { text ->
+            viewModel.onQueryChanged(text?.toString().orEmpty())
+        }
+    }
+
+    private fun collectUiState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    adapter?.submitList(state.courses)
+                    // TODO: handle loading and error states
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {

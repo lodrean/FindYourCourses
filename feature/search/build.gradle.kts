@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -36,11 +38,19 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.network)
+    implementation(projects.core.database)
+    implementation(projects.core.model)
+    implementation(projects.uiKit)
     implementation(libs.glide)
+    annotationProcessor(libs.compiler)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    annotationProcessor(libs.compiler)
-    implementation(projects.uiKit)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.coroutines)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.lodrean.findyourcourse.R
 import com.lodrean.findyourcourse.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

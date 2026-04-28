@@ -100,6 +100,7 @@ class SearchFragment : Fragment() {
                         getString(R.string.no_results)
                     }
                     binding.recyclerView.isVisible = state.courses.isNotEmpty()
+                    binding.nextPageProgress.isVisible = state.isLoadingNextPage
                 }
             }
         }

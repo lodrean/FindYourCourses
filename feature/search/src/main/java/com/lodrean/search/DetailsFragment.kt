@@ -1,5 +1,7 @@
 package com.lodrean.search
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +40,11 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.favoriteButton.setOnClickListener {
             viewModel.toggleFavorite()
+        }
+        binding.goToPlatformButton.setOnClickListener {
+            val courseId = viewModel.uiState.value.course?.id ?: return@setOnClickListener
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://stepik.org/course/$courseId/"))
+            startActivity(intent)
         }
         collectUiState()
     }
